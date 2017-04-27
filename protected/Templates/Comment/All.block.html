@@ -1,0 +1,16 @@
+{% if comments is empty %}
+    <h3>Пока комментариев нет</h3>
+{% else %}
+    <h3>Комментарии:</h3>
+    {% for comment in comments %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h5>
+                    <b>{{ comment.author }}</b><br>
+                    <small>{{ comment.published }}</small>
+                </h5>
+                <p>{{ comment.body }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

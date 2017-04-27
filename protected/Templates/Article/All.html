@@ -1,0 +1,19 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    {% for article in articles %}
+        <article>
+            <header>
+                <h2><a href="/article/one/?id={{ article.getPk() }}">{{ article.title }}</a></h2>
+            </header>
+            <p>
+                {{ article.lead }}
+                <a href="/article/one/?id={{ article.getPk() }}"> читать&nbsp;далее</a>
+            </p>
+            <footer>
+                <small>Дата публикации: {{ article.published }}</small>
+            </footer>
+        </article>
+        <hr>
+    {% endfor %}
+{% endblock %}

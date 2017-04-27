@@ -1,0 +1,39 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    <h2>Админ-панель :: статьи</h2>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <h4>Добавить новую статью:</h4>
+        </div>
+        <div class="col-sm-9">
+            <a href="/admin/article/add">
+                <button type="button" class="btn btn-success btn-sm">Добавить</button>
+            </a>
+        </div>
+    </div>
+    <hr>
+    <table class="table table-bordered">
+        <tr>
+           <th>Название</th>
+           <th>Редактировать</th>
+           <th>Удалить</th>
+        </tr>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>
+                    <a href="/admin/article/edit/{{ article.getPk() }}">
+                        <button type="button" class="btn btn-primary btn-sm">Редактировать</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/admin/article/delete/{{ article.getPk() }}">
+                        <button type="button" class="btn btn-danger btn-sm">Удалить</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Minimal web-application based on T4 framework</title>
-  {{ publishCss() }}
+    <meta charset="UTF-8">
+    <title>{{ app.config.title }}</title>
+    {{ publish('/Layouts/css') }}
+    {{ publishCss() }}
+    <link href="{{ asset('/Layouts/css/index.css') }}" rel="stylesheet">
 </head>
 <body>
-{% block content %}{% endblock %}
-{{ publishJs() }}
+    <div class="container">
+        <div class="row">
+            <div id="header">
+                <h1 id="main-title">Блог Александра Попова</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2" id="left">
+                <ul id="menu">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/admin">Админ-панель</a></li>
+                    <li><a href="/article/all">Статьи</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10" id="right">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <div id="clear">
+
+        </div>
+    </div>
+    <div id="footer">
+        <a href="https://github.com/customer41/php-2-final">
+            &copy; 2017, Александр Попов. This project was created using T4 framework.
+        </a>
+    </div>
+    {{ publishJs() }}
 </body>
 </html>

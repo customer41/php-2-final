@@ -10,6 +10,16 @@
             <small>Дата публикации: {{ article.published }}</small>
         </footer>
     </article>
+
+    {% if errors is not empty %}
+        <br>
+        <div class="alert alert-warning">
+            {% for error in errors %}
+                <p>{{ error.getMessage() }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <t4:block path="//Comment/Add(article_id={{ article.getPk }})" />
     <t4:block path="//Comment/All(article_id={{ article.getPk }})" />
 {% endblock %}
